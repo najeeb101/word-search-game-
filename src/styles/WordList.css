@@ -1,0 +1,146 @@
+/* WordList component styles */
+.word-list-container {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--bg-tertiary);
+    box-shadow: var(--shadow-md);
+    min-width: 250px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.word-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--bg-secondary);
+}
+
+.word-list-header h3 {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.word-count {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: var(--bg-secondary);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.word-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.word-item {
+    padding: var(--spacing-md);
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--bg-tertiary);
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: all var(--transition-normal);
+}
+
+.word-item.found {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));
+    border-color: var(--success-color);
+    color: var(--success-color);
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .word-list-container {
+        /* Flexible width for side-by-side or stacked */
+        flex: 1 1 140px;
+        min-width: 120px;
+        width: auto;
+
+        /* Container Query Setup */
+        container-type: inline-size;
+        container-name: word-list-box;
+
+        /* Default Sidebar Look (Narrow/Side-by-side) */
+        padding: var(--spacing-sm);
+        max-height: 60vh;
+        overflow-y: hidden;
+        border: 1px solid var(--bg-tertiary);
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: var(--radius-md);
+        box-shadow: none;
+    }
+
+    .word-list-header {
+        margin-bottom: var(--spacing-xs);
+        padding-bottom: var(--spacing-xs);
+    }
+
+    /* Vertical List (Default for Sidebar) */
+    .word-list {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+        gap: var(--spacing-xs);
+        max-height: 50vh;
+        padding-bottom: var(--spacing-sm);
+        padding-right: 2px;
+    }
+
+    .word-item {
+        flex: 0 0 auto;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        background: white;
+        border-radius: var(--radius-sm);
+        box-shadow: var(--shadow-sm);
+        font-size: 0.8rem;
+        border: 1px solid var(--bg-tertiary);
+        text-align: center;
+    }
+
+    .word-list::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    /* Horizontal Layout (When Stacked/Wide) */
+    @container word-list-box (min-width: 250px) {
+        .word-list-container {
+            max-height: none;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+            padding: var(--spacing-sm) 0;
+        }
+
+        .word-list {
+            flex-direction: row;
+            overflow-x: auto;
+            overflow-y: hidden;
+            max-height: none;
+            gap: var(--spacing-sm);
+            padding: 4px 0;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .word-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .word-item {
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            padding: var(--spacing-xs) var(--spacing-md);
+        }
+    }
+}

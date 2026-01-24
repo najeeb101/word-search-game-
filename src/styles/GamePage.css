@@ -1,0 +1,239 @@
+/* Game Page styles */
+.game-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.game-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+}
+
+.game-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    gap: var(--spacing-lg);
+}
+
+.level-info {
+    text-align: center;
+}
+
+.level-info h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.level-info p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.game-controls {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.hint-button {
+    background: linear-gradient(135deg, var(--accent-color), #d97706);
+    color: white;
+    height: var(--control-height);
+    width: var(--control-width);
+    padding: 0 var(--spacing-md);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    transition: all var(--transition-normal);
+    box-sizing: border-box;
+    border: 2px solid transparent;
+}
+
+.hint-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+}
+
+.hint-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.game-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    width: 100%;
+}
+
+/* Victory Modal */
+.victory-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.victory-content {
+    background: white;
+    border: 2px solid var(--success-color);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    max-width: 500px;
+    text-align: center;
+    animation: slideUp 0.5s ease-out;
+    box-shadow: var(--shadow-xl);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.victory-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--success-color);
+}
+
+.victory-content p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.victory-time {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+    color: var(--primary-light);
+    margin-bottom: var(--spacing-xl);
+}
+
+.victory-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+.retry-button,
+.next-button {
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: all var(--transition-normal);
+}
+
+.retry-button {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 2px solid var(--bg-tertiary);
+}
+
+.retry-button:hover {
+    background: var(--bg-tertiary);
+    transform: translateY(-2px);
+}
+
+.next-button {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    box-shadow: 0 10px 20px rgba(200, 116, 105, 0.2);
+}
+
+.next-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(200, 116, 105, 0.4);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .game-container {
+        padding: var(--spacing-md);
+    }
+
+    .game-header {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: var(--spacing-md);
+        gap: var(--spacing-sm);
+    }
+
+    .level-info h2 {
+        font-size: 1.25rem;
+        margin-bottom: 2px;
+    }
+
+    .level-info p {
+        font-size: 0.875rem;
+    }
+
+    .game-controls {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .game-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+        width: 100%;
+    }
+
+    .victory-content {
+        margin: var(--spacing-md);
+        padding: var(--spacing-xl);
+    }
+
+    .victory-buttons {
+        flex-direction: column;
+    }
+
+    .retry-button,
+    .next-button {
+        width: 100%;
+    }
+}
