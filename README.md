@@ -1,19 +1,27 @@
-# 🎯 Word Search Game
+# Word Search Game
 
 <div align="center">
 
 ![Silatha Logo](./public/logo.png)
 
-**A modern, progressive word search puzzle game with 8 challenging levels**
+**A full-featured word search puzzle game with 8 levels of increasing complexity.**
 
 [![React](https://img.shields.io/badge/React-19.2.0-61dafb?logo=react&logoColor=white)](https://reactjs.org/)
 [![Firebase](https://img.shields.io/badge/Firebase-12.8.0-ffca28?logo=firebase&logoColor=white)](https://firebase.google.com/)
 [![Vite](https://img.shields.io/badge/Vite-7.2.4-646cff?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
+[**🎮 Play the Game**](https://silathagame.web.app)
+
 [📖 Documentation](#getting-started) • [🐛 Report Bug](https://github.com/najeeb101/word-search-game-/issues) • [✨ Request Feature](https://github.com/najeeb101/word-search-game-/issues)
 
 </div>
+
+---
+
+## Project Motivation
+
+This project was built with a simple goal: to create a fun, engaging, and challenging word puzzle experience. It combines modern web technologies with classic gameplay mechanics to test players' observation skills across progressively difficult levels, offering a competitive and rewarding experience for puzzle enthusiasts.
 
 ---
 
@@ -45,60 +53,48 @@
 <td>
 
 🎯 **8 Progressive Levels**
-- From beginner to ultimate difficulty
-- Gradual introduction of new mechanics
+- Ranges from beginner to highest difficulty
+- Gradual introduction of grid complexity
 
 🔄 **Multiple Word Directions**
 - Horizontal and vertical placement
 - Backwards words in advanced levels
 
 ⏱️ **Progress Timer**
-- Track how long it takes to complete each level
-- Challenge yourself to beat your best time
+- Tracks completion time for each level
+- Encourages performance improvement
 
 💡 **Smart Hint System**
-- Limited hints per level
+- Limited hints available per level
 - Strategic hint usage required
 
 </td>
 <td>
 
 📊 **Progress Tracking**
-- Save your best times
-- Unlock new levels progressively
+- Saves best completion times
+- Unlocks new levels progressively
 - Cross-device sync for authenticated users
 
 🔐 **Firebase Authentication**
-- Anonymous login for instant play
+- Anonymous login for instant access
 - Optional email/password registration
 - Secure user data storage
 
 📱 **Fully Responsive**
-- Optimized for desktop, tablet, and mobile
-- Touch-friendly controls
-- Adaptive layouts
+- Adapted for desktop, tablet, and mobile
+- Touch-friendly interactions
+- Fluid layouts
 
-🎨 **Modern UI**
-- Dark theme with glassmorphism
-- Smooth animations and transitions
-- Premium visual design
+🎨 **User Interface**
+- Dark theme styling
+- Smooth transitions
+- Clean visual design
 
 </td>
 </tr>
 </table>
 
----
-
-## 🎮 Demo
-
-> **Note:** Add screenshots or a GIF of your game in action here!
-
-<!-- Uncomment and add your screenshots
-<div align="center">
-  <img src="./docs/screenshots/landing-page.png" alt="Landing Page" width="45%">
-  <img src="./docs/screenshots/game-play.png" alt="Game Play" width="45%">
-</div>
--->
 
 ---
 
@@ -106,13 +102,13 @@
 
 | Category | Technology |
 |----------|-----------|
-| **Frontend Framework** | React 18 with functional components and hooks |
+| **Frontend Framework** | React 19 with functional components and hooks |
 | **Routing** | React Router v6 |
 | **Backend Services** | Firebase (Authentication + Firestore) |
 | **Build Tool** | Vite |
 | **Styling** | Vanilla CSS with CSS custom properties |
 | **State Management** | React Hooks (useState, useEffect, useContext) |
-| **Deployment** | Firebase Hosting (or any static hosting) |
+| **Deployment** | Firebase Hosting |
 
 ---
 
@@ -120,11 +116,11 @@
 
 ### Prerequisites
 
-Before you begin, ensure you have the following installed:
+Ensure you have the following installed:
 
-- **Node.js** (v16 or higher) - [Download](https://nodejs.org/)
-- **npm** or **yarn** - Comes with Node.js
-- **Firebase Account** - [Sign up](https://firebase.google.com/)
+- **Node.js** (v16 or higher)
+- **npm** or **yarn**
+- **Firebase Account**
 
 ### Firebase Setup
 
@@ -167,54 +163,15 @@ Before you begin, ensure you have the following installed:
    cp .env.example .env
    ```
 
-4. **Edit `.env` file** with your Firebase credentials:
-   ```env
-   VITE_FIREBASE_API_KEY=your_api_key_here
-   VITE_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
-   VITE_FIREBASE_PROJECT_ID=your_project_id
-   VITE_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
-   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   VITE_FIREBASE_APP_ID=your_app_id
-   ```
-
-5. **Start the development server**
+4. **Start the development server**
    ```bash
    npm run dev
    ```
 
-6. **Open your browser**
-   - Navigate to `http://localhost:5173`
-   - Start playing! 🎮
+5. **Open your browser**
+   - Navigate to `http://localhost:####`
 
 ---
-
-## 🔒 Firebase Security Rules
-
-To secure your Firestore database, add these rules in the Firebase Console:
-
-**Navigate to:** Firestore Database → Rules
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // User documents - users can only read/write their own data
-    match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-      
-      // User progress subcollection
-      match /progress/{levelId} {
-        allow read, write: if request.auth != null && request.auth.uid == userId;
-      }
-    }
-  }
-}
-```
-
-**Important:** Click "Publish" after adding the rules.
-
----
-
 ## 📦 Building for Production
 
 ### Build the Application
@@ -250,12 +207,6 @@ npm run build
 firebase deploy
 ```
 
-### Deploy to Other Platforms
-
-- **Vercel**: Connect your GitHub repo and deploy automatically
-- **Netlify**: Drag and drop the `dist` folder or connect via Git
-- **GitHub Pages**: Use `gh-pages` package to deploy the `dist` folder
-
 ---
 
 ## 🎯 Game Controls
@@ -266,15 +217,6 @@ firebase deploy
 | **Touch** | Touch and drag on mobile devices |
 | **Hint Button** | Reveals the first letter of a random unfound word |
 | **Timer** | Tracks your completion time |
-
-### How to Play
-
-1. **Select a level** from the level selection screen
-2. **Find all words** listed on the right (desktop) or bottom (mobile)
-3. **Click/touch and drag** across letters to select a word
-4. **Release** when you've selected the entire word
-5. **Use hints wisely** - they're limited!
-6. **Complete all words** to unlock the next level and save your best time
 
 ---
 
@@ -289,7 +231,7 @@ firebase deploy
 | **5** | 15×15 | 11 | H, V, Back | 1 | ⭐⭐⭐⭐ Hard |
 | **6** | 16×16 | 12 | H, V, Back | 1 | ⭐⭐⭐⭐ Hard+ |
 | **7** | 18×18 | 13 | H, V, Back | 1 | ⭐⭐⭐⭐⭐ Expert |
-| **8** | 20×20 | 14 | H, V, Back | 0 | ⭐⭐⭐⭐⭐ Ultimate |
+| **8** | 20×20 | 14 | H, V, Back | 0 | ⭐⭐⭐⭐⭐ Highest |
 
 **Legend:**
 - **H** = Horizontal
@@ -303,7 +245,7 @@ firebase deploy
 ```
 word-search-game/
 ├── public/                  # Static assets
-│   └── logo.png            # Silatha logo
+│   └── logo.png            # Application logo
 ├── src/
 │   ├── components/         # Reusable React components
 │   │   ├── Cell.jsx       # Individual grid cell component
@@ -319,7 +261,7 @@ word-search-game/
 │   ├── hooks/             # Custom React hooks
 │   │   ├── useAuth.js            # Authentication logic
 │   │   ├── useGameProgress.js    # Progress tracking & saving
-│   │   └── useWordSelection.js   # Word selection handling
+│   │   ├── useWordSelection.js   # Word selection handling
 │   ├── utils/             # Utility functions
 │   │   ├── wordPlacement.js # Word placement algorithm
 │   │   ├── gridGenerator.js # Grid generation logic
@@ -328,9 +270,7 @@ word-search-game/
 │   │   ├── firebase.js    # Firebase initialization
 │   │   └── levels.js      # Level definitions & settings
 │   ├── styles/            # CSS stylesheets
-│   │   └── *.css         # Component-specific styles
 │   ├── App.jsx           # Main application component
-│   ├── App.css           # Global app styles
 │   ├── main.jsx          # Application entry point
 │   └── index.css         # Global CSS variables & resets
 ├── .env.example          # Environment variables template
@@ -347,117 +287,61 @@ word-search-game/
 
 ### 🧩 Word Placement Algorithm
 
-- **Greedy Random Placement**: Words are placed one at a time with collision detection
-- **Length-First Sorting**: Longer words are placed first to maximize success rate
-- **4-Direction Support**: Horizontal, vertical, and their backwards variants
-- **Level-Based Filtering**: Level 1 uses only H/V, Level 2+ adds backwards directions
+- **Random Placement**: Words are placed sequentially with collision checks.
+- **Length-First Sorting**: Longer words are placed first to improve placement success.
+- **Direction Support**: Horizontal, vertical, and their backwards variants.
+- **Level-Based Filtering**: Level 1 restricts to H/V; Level 2+ enables backwards directions.
 
 ### 🖱️ Selection Mechanism
 
-- **Unified Event Handler**: Single handler for both mouse and touch events
-- **Real-Time Validation**: Selection is validated as the user drags
-- **Bi-Directional Checking**: Checks both forward and backward directions
-- **Visual Feedback**: Immediate highlighting of selected cells
+- **Unified Event Handler**: Uses a single handler logic for both mouse and touch events.
+- **Real-Time Validation**: Validates selection path as the user drags.
+- **Bi-Directional Checking**: Supports forward and backward selection paths.
+- **Visual Feedback**: Provides immediate visual cues for selected cells.
 
 ### 📈 Progressive Difficulty
 
-The game introduces complexity gradually:
+Complexity increases through the levels:
 
-1. **Level 1**: Learn the basics with horizontal and vertical words only
-2. **Level 2+**: Introduce backwards words for added challenge
-3. **Level 3+**: Larger grids with more words to find
-4. **Level 5+**: Reduce hints to increase difficulty
-5. **Level 8**: Ultimate test with no hints and the largest grid
-
-### 🔥 Firebase Integration
-
-- **Anonymous Authentication**: Play instantly without signup
-- **Optional Registration**: Create an account to sync progress across devices
-- **Optimized Firestore Structure**: Minimal reads/writes for cost efficiency
-- **Security Rules**: User data is protected and isolated
-
-### 📱 Responsive Design
-
-- **Mobile-First CSS**: Designed for mobile, enhanced for desktop
-- **Adaptive Layouts**: Word list repositions from sidebar to bottom panel
-- **Touch Optimization**: Proper touch event handling for drag selection
-- **Viewport Constraints**: Grid scales to fit screen without scrolling
+1. **Level 1**: Introductory level with horizontal and vertical words.
+2. **Level 2+**: Introduces backwards words.
+3. **Level 3+**: Increases grid size and word count.
+4. **Level 5+**: Reduces available hints.
+5. **Level 8**: Maximum difficulty with zero hints and largest grid.
 
 ---
 
 ## 🔧 Troubleshooting
 
-### Firebase Errors on Startup
+### Firebase Errors
 
-**Problem:** App crashes or shows Firebase errors
-
-**Solutions:**
-- ✅ Verify `.env` file exists in the root directory
-- ✅ Check that all Firebase credentials are correct
-- ✅ Ensure Firebase Authentication is enabled (Anonymous provider)
-- ✅ Confirm Firestore Database is created
-- ✅ Verify security rules are deployed
-
-### Words Not Being Detected
-
-**Problem:** Selected words aren't being recognized
+**Problem:** App crashes or shows Firebase errors.
 
 **Solutions:**
-- ✅ Ensure you're selecting in a straight line (no curves)
-- ✅ Try selecting the word in the opposite direction
-- ✅ Verify the word is in the "Words to Find" list
-- ✅ Check that you're selecting the complete word
-
-### Progress Not Saving
-
-**Problem:** Game progress doesn't persist
-
-**Solutions:**
-- ✅ Verify you're signed in (check the header)
-- ✅ Open browser console (F12) and check for Firebase errors
-- ✅ Ensure Firestore security rules allow writes for your user
-- ✅ Check your internet connection
+- ✅ Verify `.env` file exists in the root directory.
+- ✅ Check that all Firebase credentials in `.env` are correct.
+- ✅ Ensure Firebase Authentication (Anonymous) is enabled.
+- ✅ Confirm Firestore Database is created.
 
 ### Build Errors
 
-**Problem:** `npm run build` fails
+**Problem:** `npm run build` fails.
 
 **Solutions:**
-- ✅ Delete `node_modules` and `package-lock.json`, then run `npm install`
-- ✅ Ensure you're using Node.js v16 or higher
-- ✅ Check for any ESLint errors with `npm run lint`
-
-### Deployment Issues
-
-**Problem:** Deployed app shows blank page
-
-**Solutions:**
-- ✅ Ensure environment variables are set in your hosting platform
-- ✅ Check that the build directory is set to `dist`
-- ✅ Configure as a single-page application (SPA)
-- ✅ Verify Firebase configuration is correct in production
+- ✅ Delete `node_modules` and `package-lock.json`, then run `npm install`.
+- ✅ Ensure you're using Node.js v16 or higher.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here's how you can help:
+Contributions are welcome. Please follow these steps:
 
-1. **Fork the repository**
-2. **Create a feature branch** (`git checkout -b feature/AmazingFeature`)
-3. **Commit your changes** (`git commit -m 'Add some AmazingFeature'`)
-4. **Push to the branch** (`git push origin feature/AmazingFeature`)
-5. **Open a Pull Request**
-
-### Ideas for Contributions
-
-- 🎨 Additional themes (light mode, custom color schemes)
-- 🌍 Internationalization (i18n) support
-- 🏆 Global leaderboard functionality
-- 📊 Statistics and analytics dashboard
-- 🎵 Sound effects and background music
-- 🎮 Additional game modes (timed sprint, endless mode)
-- 📱 Progressive Web App (PWA) features
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/NewFeature`).
+3. Commit your changes (`git commit -m 'Add NewFeature'`).
+4. Push to the branch (`git push origin feature/NewFeature`).
+5. Open a Pull Request.
 
 ---
 
@@ -469,10 +353,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 🙏 Acknowledgments
 
-- Built with ❤️ using **React** and **Firebase**
-- Logo design: **Silatha**
-- Inspired by classic word search puzzles
-- Thanks to all contributors and players!
+- Built with **React** and **Firebase**.
+- Logo design: **Silatha**.
 
 ---
 
