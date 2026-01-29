@@ -57,7 +57,7 @@ This project was built with a simple goal: to create a fun, engaging, and challe
 - Gradual introduction of grid complexity
 
 🔄 **Multiple Word Directions**
-- Horizontal and vertical placement
+- Horizontal, vertical, and diagonal placement
 - Backwards words in advanced levels
 
 ⏱️ **Progress Timer**
@@ -224,19 +224,20 @@ firebase deploy
 
 | Level | Grid Size | Words | Directions | Hints | Difficulty |
 |:-----:|:---------:|:-----:|:-----------|:-----:|:----------:|
-| **1** | 8×8 | 5 | H, V | 3 | ⭐ Beginner |
-| **2** | 10×10 | 7 | H, V, Back | 3 | ⭐⭐ Easy |
-| **3** | 12×12 | 8 | H, V, Back | 2 | ⭐⭐⭐ Medium |
-| **4** | 14×14 | 10 | H, V, Back | 2 | ⭐⭐⭐ Medium+ |
-| **5** | 15×15 | 11 | H, V, Back | 1 | ⭐⭐⭐⭐ Hard |
-| **6** | 16×16 | 12 | H, V, Back | 1 | ⭐⭐⭐⭐ Hard+ |
-| **7** | 18×18 | 13 | H, V, Back | 1 | ⭐⭐⭐⭐⭐ Expert |
-| **8** | 20×20 | 14 | H, V, Back | 0 | ⭐⭐⭐⭐⭐ Highest |
+| **1** | 8×8 | 5 | H, V, D | 3 | ⭐ Beginner |
+| **2** | 10×10 | 7 | H, V, D, Back | 3 | ⭐⭐ Easy |
+| **3** | 12×12 | 8 | H, V, D, Back | 2 | ⭐⭐⭐ Medium |
+| **4** | 14×14 | 10 | H, V, D, Back | 2 | ⭐⭐⭐ Medium+ |
+| **5** | 15×15 | 11 | H, V, D, Back | 1 | ⭐⭐⭐⭐ Hard |
+| **6** | 16×16 | 12 | H, V, D, Back | 1 | ⭐⭐⭐⭐ Hard+ |
+| **7** | 18×18 | 13 | H, V, D, Back | 1 | ⭐⭐⭐⭐⭐ Expert |
+| **8** | 20×20 | 14 | H, V, D, Back | 0 | ⭐⭐⭐⭐⭐ Highest |
 
 **Legend:**
 - **H** = Horizontal
 - **V** = Vertical
-- **Back** = Backwards (words can be reversed horizontally or vertically)
+- **D** = Diagonal
+- **Back** = Backwards (words can be reversed horizontally, vertically, or diagonally)
 
 ---
 

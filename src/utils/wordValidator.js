@@ -20,12 +20,6 @@ const getDirection = (cell1, cell2) => {
         return null;
     }
 
-    // Reject diagonal directions (both row and col are non-zero)
-    // Only allow horizontal (rowDir === 0) or vertical (colDir === 0)
-    if (rowDir !== 0 && colDir !== 0) {
-        return null;
-    }
-
     return { row: rowDir, col: colDir };
 };
 

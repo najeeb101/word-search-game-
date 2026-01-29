@@ -9,7 +9,7 @@ export const LEVELS = [
         words: ['CAT', 'DOG', 'BIRD', 'FISH', 'FROG'],
         timeLimit: null, // No time limit
         hints: 3,
-        description: 'Find 5 simple words - horizontal and vertical only',
+        description: 'Find 5 simple words - horizontal, vertical, and diagonal',
     },
     {
         id: 2,
@@ -18,7 +18,7 @@ export const LEVELS = [
         words: ['APPLE', 'ORANGE', 'BANANA', 'GRAPE', 'LEMON', 'PEACH', 'MANGO'],
         timeLimit: null,
         hints: 3,
-        description: 'Find 7 fruit names - horizontal and vertical',
+        description: 'Find 7 fruit names - horizontal, vertical, and diagonal',
     },
     {
         id: 3,

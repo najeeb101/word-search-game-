@@ -18,18 +18,17 @@ const DIRECTIONS = {
  * @returns {Array} Array of direction objects
  */
 export const getAllowedDirections = (level) => {
-  if (level === 1) {
-    // Level 1: Only horizontal and vertical
-    return [DIRECTIONS.HORIZONTAL, DIRECTIONS.VERTICAL];
-  } else {
-    // Level 2+: Horizontal and vertical including backwards
-    return [
-      DIRECTIONS.HORIZONTAL,
-      DIRECTIONS.VERTICAL,
-      DIRECTIONS.HORIZONTAL_BACK,
-      DIRECTIONS.VERTICAL_BACK,
-    ];
-  }
+  // Return all directions including diagonals for all levels
+  return [
+    DIRECTIONS.HORIZONTAL,
+    DIRECTIONS.VERTICAL,
+    DIRECTIONS.HORIZONTAL_BACK,
+    DIRECTIONS.VERTICAL_BACK,
+    DIRECTIONS.DIAGONAL_DOWN_RIGHT,
+    DIRECTIONS.DIAGONAL_DOWN_LEFT,
+    DIRECTIONS.DIAGONAL_UP_RIGHT,
+    DIRECTIONS.DIAGONAL_UP_LEFT,
+  ];
 };
 
 /**
