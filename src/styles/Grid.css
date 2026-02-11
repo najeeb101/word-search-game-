@@ -3,40 +3,41 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: var(--spacing-lg);
+    padding: 0;
     touch-action: none;
     overscroll-behavior: contain;
 }
 
 .grid {
     display: grid;
-    gap: clamp(0.25rem, 0.5vw, 0.5rem);
-    max-width: min(90vw, 600px);
+    gap: 4px;
     width: 100%;
-    padding: var(--spacing-lg);
+    max-width: 580px;
+    padding: 12px;
     background: white;
     border-radius: var(--radius-xl);
     border: 1px solid var(--bg-tertiary);
     box-shadow: var(--shadow-xl);
     touch-action: none;
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
+    /* Maintain square ratio */
+    margin: 0 auto;
 }
 
 /* Mobile responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .grid-container {
-        padding: var(--spacing-sm);
-        width: auto;
-        flex: 0 0 auto;
+        padding: 0;
+        width: 100%;
     }
 
     .grid {
-        --min-grid-w: calc(var(--grid-columns) * 36px + (var(--grid-columns) - 1) * 2px + 0.5rem);
-        width: var(--min-grid-w);
-        max-width: 90vw;
-        max-height: 70vh;
-        padding: 0.25rem;
+        max-width: 100%;
+        max-height: 80vh;
+        padding: 6px;
         gap: 2px;
-        margin: 0;
-        aspect-ratio: 1 / 1;
+        box-shadow: var(--shadow-md);
+        /* Lighter shadow on mobile */
     }
 }

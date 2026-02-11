@@ -6,7 +6,7 @@
     font-size: clamp(0.875rem, 2vw, 1.25rem);
     font-weight: 600;
     background: white;
-    border: 2px solid var(--bg-tertiary);
+    border: 1.5px solid var(--bg-tertiary);
     border-radius: var(--radius-sm);
     color: var(--text-primary);
     cursor: pointer;
@@ -15,12 +15,13 @@
     box-shadow: var(--shadow-sm);
     aspect-ratio: 1;
     touch-action: none;
+    box-sizing: border-box;
 }
 
 .cell:hover {
     background: var(--bg-primary);
     border-color: var(--primary-light);
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: var(--shadow-md);
 }
 
@@ -28,7 +29,7 @@
     background: var(--primary-color);
     border-color: var(--primary-dark);
     color: white;
-    transform: scale(1.1);
+    transform: scale(1.04);
     box-shadow: 0 0 20px rgba(200, 116, 105, 0.4);
 }
 

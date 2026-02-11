@@ -71,11 +71,14 @@
 
 .game-content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
     justify-content: center;
-    gap: var(--spacing-xl);
+    gap: 40px;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
 }
 
 /* Victory Modal */
@@ -185,7 +188,7 @@
 }
 
 /* Mobile responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .game-container {
         padding: var(--spacing-md);
     }
@@ -194,32 +197,44 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
-        margin-bottom: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
         gap: var(--spacing-sm);
     }
 
     .level-info h2 {
-        font-size: 1.25rem;
-        margin-bottom: 2px;
+        font-size: 1.15rem;
+        margin-bottom: 0px;
     }
 
     .level-info p {
-        font-size: 0.875rem;
+        font-size: 0.8rem;
     }
 
     .game-controls {
+        display: flex;
+        flex-direction: column;
+        /* Stack vertically on mobile */
         width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
+        gap: 12px;
+        padding: 0 16px;
+    }
+
+    .hint-button {
+        width: 100%;
+        /* Full width on mobile */
+        min-height: 44px;
+        /* Minimum touch target height */
+        font-size: 0.95rem;
+        padding: 0 16px;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+        /* Reduced shadow intensity */
     }
 
     .game-content {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
-        gap: var(--spacing-md);
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
         width: 100%;
     }
 

@@ -4,7 +4,7 @@
 
 ![Silatha Logo](./public/logo.png)
 
-**A full-featured word search puzzle game with 8 levels of increasing complexity.**
+**A full-featured word search puzzle game focused on women's empowerment and health awareness, featuring 6 challenging levels.**
 
 [![React](https://img.shields.io/badge/React-19.2.0-61dafb?logo=react&logoColor=white)](https://reactjs.org/)
 [![Firebase](https://img.shields.io/badge/Firebase-12.8.0-ffca28?logo=firebase&logoColor=white)](https://firebase.google.com/)
@@ -21,7 +21,7 @@
 
 ## Project Motivation
 
-This project was built with a simple goal: to create a fun, engaging, and challenging word puzzle experience. It combines modern web technologies with classic gameplay mechanics to test players' observation skills across progressively difficult levels, offering a competitive and rewarding experience for puzzle enthusiasts.
+This project was built to raise awareness about women's health, empowerment, and workplace equality through an engaging word puzzle experience. By featuring terms related to women's health conditions, workplace challenges, and empowerment concepts, the game educates players while testing their observation skills across progressively difficult levels. It combines modern web technologies with meaningful content to create both an entertaining and enlightening experience.
 
 ---
 
@@ -52,8 +52,9 @@ This project was built with a simple goal: to create a fun, engaging, and challe
 <tr>
 <td>
 
-🎯 **8 Progressive Levels**
-- Ranges from beginner to highest difficulty
+🎯 **6 Progressive Levels**
+- Ranges from beginner to legend difficulty
+- Focused on women's empowerment themes
 - Gradual introduction of grid complexity
 
 🔄 **Multiple Word Directions**
@@ -224,20 +225,23 @@ firebase deploy
 
 | Level | Grid Size | Words | Directions | Hints | Difficulty |
 |:-----:|:---------:|:-----:|:-----------|:-----:|:----------:|
-| **1** | 8×8 | 5 | H, V, D | 3 | ⭐ Beginner |
-| **2** | 10×10 | 7 | H, V, D, Back | 3 | ⭐⭐ Easy |
-| **3** | 12×12 | 8 | H, V, D, Back | 2 | ⭐⭐⭐ Medium |
-| **4** | 14×14 | 10 | H, V, D, Back | 2 | ⭐⭐⭐ Medium+ |
-| **5** | 15×15 | 11 | H, V, D, Back | 1 | ⭐⭐⭐⭐ Hard |
-| **6** | 16×16 | 12 | H, V, D, Back | 1 | ⭐⭐⭐⭐ Hard+ |
-| **7** | 18×18 | 13 | H, V, D, Back | 1 | ⭐⭐⭐⭐⭐ Expert |
-| **8** | 20×20 | 14 | H, V, D, Back | 0 | ⭐⭐⭐⭐⭐ Highest |
+| **1** | 10×10 | 3 | H, V, D | 3 | ⭐ Beginner |
+| **2** | 10×10 | 4 | H, V, D, Back | 3 | ⭐⭐ Easy |
+| **3** | 12×12 | 4 | H, V, D, Back | 2 | ⭐⭐⭐ Medium |
+| **4** | 14×14 | 4 | H, V, D, Back | 2 | ⭐⭐⭐⭐ Hard |
+| **5** | 16×16 | 4 | H, V, D, Back | 1 | ⭐⭐⭐⭐ Expert |
+| **6** | 18×18 | 6 | H, V, D, Back | 1 | ⭐⭐⭐⭐⭐ Legend |
 
 **Legend:**
 - **H** = Horizontal
 - **V** = Vertical
 - **D** = Diagonal
 - **Back** = Backwards (words can be reversed horizontally, vertically, or diagonally)
+
+**Featured Topics:**
+- Women's health conditions (PMDD, Endometriosis, Osteoporosis)
+- Workplace challenges (Glass Cliff, Manterruption, Tokenism)
+- Empowerment concepts (Allyship, Advocacy, Sponsorship, Intersectionality)
 
 ---
 
@@ -304,11 +308,12 @@ word-search-game/
 
 Complexity increases through the levels:
 
-1. **Level 1**: Introductory level with horizontal and vertical words.
-2. **Level 2+**: Introduces backwards words.
-3. **Level 3+**: Increases grid size and word count.
-4. **Level 5+**: Reduces available hints.
-5. **Level 8**: Maximum difficulty with zero hints and largest grid.
+1. **Level 1 (Beginner)**: Introductory level with 3 short words, horizontal and vertical placement.
+2. **Level 2 (Easy)**: Introduces backwards words with 4 short terms.
+3. **Level 3 (Medium)**: Increases grid size to 12×12 with medium-length words.
+4. **Level 4 (Hard)**: 14×14 grid with longer health and workplace terms.
+5. **Level 5 (Expert)**: 16×16 grid with complex medical and social terms, reduced hints.
+6. **Level 6 (Legend)**: Maximum difficulty with 18×18 grid, 6 challenging words, and only 1 hint.
 
 ---
 

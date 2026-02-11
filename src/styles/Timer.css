@@ -67,3 +67,27 @@
         box-shadow: 0 0 0 15px rgba(239, 68, 68, 0);
     }
 }
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+    .timer {
+        width: 100%;
+        padding: 0 16px;
+        height: 44px;
+        gap: 8px;
+        box-shadow: var(--shadow-sm);
+        /* Cleaner shadow */
+    }
+
+    .timer-value {
+        font-size: 1.25rem;
+    }
+
+    .timer-label {
+        font-size: 0.65rem;
+    }
+
+    .timer-icon {
+        font-size: 1.1rem;
+    }
+}

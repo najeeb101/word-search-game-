@@ -40,33 +40,12 @@ const LandingPage = () => {
             <div className="landing-content">
                 <img src="/logo.png" alt="Silatha Word Search" className="landing-logo" />
                 <h1 className="landing-title">Word Search</h1>
-                <p className="landing-subtitle">Challenge your mind. Sign in to track your progress.</p>
+                <p className="landing-subtitle">Empower your knowledge. Discover terms that matter. Sign in to track your journey.</p>
 
                 <div className="landing-actions">
                     <button className="play-button" onClick={handleStart}>
                         Get Started
                     </button>
-                </div>
-
-                <div className="landing-features">
-                    <div className="feature">
-                        <div className="feature-icon-wrapper">
-                            <span className="feature-icon">🎯</span>
-                        </div>
-                        <span className="feature-text">8 Challenging Levels</span>
-                    </div>
-                    <div className="feature">
-                        <div className="feature-icon-wrapper">
-                            <span className="feature-icon">⏱️</span>
-                        </div>
-                        <span className="feature-text">Timed Challenges</span>
-                    </div>
-                    <div className="feature">
-                        <div className="feature-icon-wrapper">
-                            <span className="feature-icon">📊</span>
-                        </div>
-                        <span className="feature-text">Progress Tracking</span>
-                    </div>
                 </div>
             </div>
         </div>

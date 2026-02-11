@@ -8,7 +8,9 @@ import { getAllowedDirections, tryPlaceWord } from './wordPlacement';
  * @returns {string} Random uppercase letter
  */
 const getRandomLetter = () => {
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    // Weighted letter distribution for more balanced, readable grids
+    // Includes more vowels and common consonants
+    const letters = 'AAAAAEEEEEEIIIIIOOOOUUUUBCDDFGGHHJKLMNNNPQRRSSSTTTTVWXYZ';
     return letters[Math.floor(Math.random() * letters.length)];
 };
 

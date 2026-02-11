@@ -5,74 +5,56 @@ export const LEVELS = [
     {
         id: 1,
         name: 'Beginner',
-        gridSize: 8,
-        words: ['CAT', 'DOG', 'BIRD', 'FISH', 'FROG'],
+        gridSize: 10,
+        words: ['PMDD', 'EQUITY', 'AGENCY'],
         timeLimit: null, // No time limit
         hints: 3,
-        description: 'Find 5 simple words - horizontal, vertical, and diagonal',
+        description: '',
     },
     {
         id: 2,
         name: 'Easy',
         gridSize: 10,
-        words: ['APPLE', 'ORANGE', 'BANANA', 'GRAPE', 'LEMON', 'PEACH', 'MANGO'],
+        words: ['ALLYSHIP', 'TOKENISM', 'ADVOCACY', 'EQUALITY'],
         timeLimit: null,
         hints: 3,
-        description: 'Find 7 fruit names - horizontal, vertical, and diagonal',
+        description: '',
     },
     {
         id: 3,
         name: 'Medium',
         gridSize: 12,
-        words: ['PYTHON', 'JAVASCRIPT', 'JAVA', 'RUBY', 'SWIFT', 'KOTLIN', 'RUST', 'GOLANG'],
+        words: ['PINKTAX', 'MOMGUILT', 'DOUBLEBIND', 'GLASSCLIFF'],
         timeLimit: null, // Count up timer
         hints: 2,
-        description: 'Find 8 programming languages - all directions',
+        description: '',
     },
     {
         id: 4,
         name: 'Hard',
         gridSize: 14,
-        words: ['MOUNTAIN', 'OCEAN', 'DESERT', 'FOREST', 'RIVER', 'VALLEY', 'CANYON', 'GLACIER', 'VOLCANO', 'ISLAND'],
+        words: ['SPONSORSHIP', 'MISCARRIAGE', 'OSTEOPOROSIS', 'PATERNALLEAVE'],
         timeLimit: null, // Count up timer
         hints: 2,
-        description: 'Find 10 geographical features - backwards words included',
+        description: '',
     },
     {
         id: 5,
         name: 'Expert',
-        gridSize: 15,
-        words: ['TELESCOPE', 'MICROSCOPE', 'GALAXY', 'PLANET', 'ASTEROID', 'COMET', 'NEBULA', 'QUASAR', 'PULSAR', 'SUPERNOVA', 'BLACKHOLE'],
+        gridSize: 16,
+        words: ['ENDOMETRIOSIS', 'MANTERRUPTION', 'MICROAGGRESSION', 'HYPERANDROGENISM'],
         timeLimit: null, // Count up timer
         hints: 1,
-        description: 'Find 11 astronomy terms - limited hints!',
+        description: '',
     },
     {
         id: 6,
-        name: 'Master',
-        gridSize: 16,
-        words: ['ALGORITHM', 'DATABASE', 'ENCRYPTION', 'FRAMEWORK', 'INTERFACE', 'PROTOCOL', 'COMPILER', 'DEBUGGER', 'REPOSITORY', 'ARCHITECTURE', 'DEPLOYMENT', 'OPTIMIZATION'],
-        timeLimit: null, // Count up timer
-        hints: 1,
-        description: 'Find 12 tech terms - master level challenge',
-    },
-    {
-        id: 7,
         name: 'Legend',
         gridSize: 18,
-        words: ['PHOTOSYNTHESIS', 'CHROMOSOME', 'MITOCHONDRIA', 'METABOLISM', 'ECOSYSTEM', 'EVOLUTION', 'GENETICS', 'ORGANISM', 'BIODIVERSITY', 'RESPIRATION', 'ADAPTATION', 'MUTATION', 'SYMBIOSIS'],
+        words: ['FERTILITYJOURNEY', 'POSTNATALANXIETY', 'IMPOSTORSYNDROME', 'INTERSECTIONALITY', 'MEDICALGASLIGHTING', 'EMPOWERMENT'],
         timeLimit: null, // Count up timer
         hints: 1,
-        description: 'Find 13 biology terms - legendary difficulty!',
-    },
-    {
-        id: 8,
-        name: 'Ultimate',
-        gridSize: 20,
-        words: ['QUANTUM', 'RELATIVITY', 'THERMODYNAMICS', 'ELECTROMAGNETISM', 'GRAVITY', 'MOMENTUM', 'ACCELERATION', 'VELOCITY', 'FREQUENCY', 'WAVELENGTH', 'AMPLITUDE', 'PARTICLE', 'ENERGY', 'ENTROPY'],
-        timeLimit: null, // Count up timer
-        hints: 0,
-        description: 'Find 14 physics terms - ultimate challenge, no hints!',
+        description: '',
     },
 ];
 

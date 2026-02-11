@@ -1,7 +1,7 @@
 /* LevelSelector component styles */
 .level-selector {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
     padding: var(--spacing-xl);
     max-width: 1200px;
@@ -145,10 +145,18 @@
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
 }
 
+/* Tablet responsiveness */
+@media (max-width: 1024px) {
+    .level-selector {
+        grid-template-columns: repeat(2, 1fr);
+        padding: var(--spacing-lg);
+    }
+}
+
 /* Mobile responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .level-selector {
         grid-template-columns: 1fr;
-        padding: var(--spacing-md);
+        padding: 16px;
     }
 }
