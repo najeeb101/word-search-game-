@@ -1,11 +1,17 @@
 // Custom hook for word selection logic
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { validateSelection } from '../utils/wordValidator';
 
 export const useWordSelection = (grid, wordList, onWordFound) => {
     const [selectedCells, setSelectedCells] = useState([]);
     const [isSelecting, setIsSelecting] = useState(false);
     const selectionStartRef = useRef(null);
+    const selectedCellsRef = useRef([]);
+
+    // Keep ref in sync so endSelection (called on mouseup) always sees current selection
+    useEffect(() => {
+        selectedCellsRef.current = selectedCells;
+    }, [selectedCells]);
 
     /**
      * Start selection
@@ -33,17 +39,18 @@ export const useWordSelection = (grid, wordList, onWordFound) => {
     }, [isSelecting]);
 
     /**
-     * End selection and validate
+     * End selection and validate (uses ref to avoid stale closure on mouseup)
      */
     const endSelection = useCallback(() => {
-        if (!isSelecting || selectedCells.length < 2) {
+        const current = selectedCellsRef.current;
+        if (!isSelecting || current.length < 2) {
             setIsSelecting(false);
             setSelectedCells([]);
             return;
         }
 
-        // Validate selection
-        const result = validateSelection(grid, selectedCells, wordList);
+        // Validate selection using current ref value
+        const result = validateSelection(grid, current, wordList);
 
         if (result) {
             onWordFound(result);
@@ -53,7 +60,7 @@ export const useWordSelection = (grid, wordList, onWordFound) => {
         setIsSelecting(false);
         setSelectedCells([]);
         selectionStartRef.current = null;
-    }, [isSelecting, selectedCells, grid, wordList, onWordFound]);
+    }, [isSelecting, grid, wordList, onWordFound]);
 
     /**
      * Cancel selection

@@ -58,6 +58,9 @@ export const LEVELS = [
     },
 ];
 
+/** Maximum level ID (derived from LEVELS so UI and progress stay in sync) */
+export const MAX_LEVEL_ID = LEVELS.length > 0 ? Math.max(...LEVELS.map((l) => l.id)) : 0;
+
 /**
  * Get level by ID
  * @param {number} levelId - Level ID

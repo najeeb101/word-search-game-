@@ -5,7 +5,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useGameProgress } from '../hooks/useGameProgress';
 import { useWordSelection } from '../hooks/useWordSelection';
 import { generateGrid } from '../utils/gridGenerator';
-import { getLevelById } from '../config/levels';
+import { getLevelById, MAX_LEVEL_ID } from '../config/levels';
 import Header from '../components/Header';
 import Grid from '../components/Grid';
 import WordList from '../components/WordList';
@@ -83,7 +83,7 @@ const GamePage = () => {
 
     const handleNextLevel = useCallback(() => {
         const nextLevelId = level.id + 1;
-        if (nextLevelId <= 8) {
+        if (nextLevelId <= MAX_LEVEL_ID) {
             navigate(`/game/${nextLevelId}`);
         } else {
             navigate('/levels');
@@ -231,7 +231,7 @@ const GamePage = () => {
                             <button className="retry-button" onClick={handleRetry}>
                                 Retry Level
                             </button>
-                            {level.id < 8 ? (
+                            {level.id < MAX_LEVEL_ID ? (
                                 <button className="next-button" onClick={handleNextLevel}>
                                     Next Level →
                                 </button>

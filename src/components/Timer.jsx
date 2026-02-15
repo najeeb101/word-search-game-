@@ -1,5 +1,5 @@
 // Timer component - Displays and manages game timer
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../styles/Timer.css';
 
 const Timer = ({ time, timeLimit }) => {

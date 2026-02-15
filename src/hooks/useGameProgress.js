@@ -1,7 +1,8 @@
 // Custom hook for managing game progress in Firestore
 import { useState, useEffect } from 'react';
-import { doc, getDoc, setDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../config/firebase';
+import { LEVELS } from '../config/levels';
 
 export const useGameProgress = (userId) => {
     const [progress, setProgress] = useState({});
@@ -25,11 +26,11 @@ export const useGameProgress = (userId) => {
             setLoading(true);
             setError(null);
 
-            // Load all level progress
+            // Load progress only for levels that exist in config
             const progressData = {};
+            const levelIds = LEVELS.map((l) => l.id);
 
-            // Try to load progress for levels 1-8
-            for (let levelId = 1; levelId <= 8; levelId++) {
+            for (const levelId of levelIds) {
                 const progressRef = doc(db, 'users', userId, 'progress', levelId.toString());
                 const progressSnap = await getDoc(progressRef);
 
