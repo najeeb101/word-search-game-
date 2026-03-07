@@ -2,6 +2,7 @@
 // Creates complete word search grids with words and random filler letters
 
 import { getAllowedDirections, tryPlaceWord } from './wordPlacement';
+import { getGridWord } from '../config/levels';
 
 /**
  * Generate a random letter (A-Z)
@@ -49,16 +50,22 @@ export const generateGrid = (words, size, level) => {
     const allowedDirections = getAllowedDirections(level);
     const placements = [];
 
-    // Sort words by length (longest first) for better placement success
-    const sortedWords = [...words].sort((a, b) => b.length - a.length);
+    // Sort words by grid length (longest first) for better placement success.
+    // getGridWord strips spaces so the sort reflects actual cells needed.
+    const sortedWords = [...words].sort(
+        (a, b) => getGridWord(b).length - getGridWord(a).length
+    );
 
     // Try to place each word
     for (const word of sortedWords) {
-        const upperWord = word.toUpperCase();
-        const placement = tryPlaceWord(grid, upperWord, allowedDirections);
+        // Strip spaces — the grid contains only letters, no blank cells
+        const gridWord = getGridWord(word);
+        const placement = tryPlaceWord(grid, gridWord, allowedDirections);
 
         if (placement) {
-            placements.push(placement);
+            // Tag the placement with the original config word so the hint
+            // system can look it up by display/config word later.
+            placements.push({ ...placement, configWord: word });
         } else {
             console.warn(`Failed to place word: ${word}`);
         }

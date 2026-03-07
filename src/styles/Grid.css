@@ -6,13 +6,20 @@
     padding: 0;
     touch-action: none;
     overscroll-behavior: contain;
+    /* Shrink inside a flex row so the word list isn't pushed off-screen */
+    min-width: 0;
+    flex: 1 1 auto;
 }
 
 .grid {
     display: grid;
     gap: 4px;
-    width: 100%;
-    max-width: 580px;
+    /*
+     * Fill the available flex slot up to 580px.
+     * In the side-by-side layout, "100%" refers to the flex container
+     * width—not the viewport—so the grid never overflows.
+     */
+    width: min(580px, 100%);
     padding: 12px;
     background: white;
     border-radius: var(--radius-xl);
@@ -21,11 +28,25 @@
     touch-action: none;
     box-sizing: border-box;
     aspect-ratio: 1 / 1;
-    /* Maintain square ratio */
     margin: 0 auto;
 }
 
-/* Mobile responsiveness */
+/* Tablet: stack grid above word list before they start competing */
+@media (max-width: 960px) {
+    .grid-container {
+        width: 100%;
+        flex: none;
+    }
+
+    .grid {
+        width: min(90vw, 560px);
+        padding: 8px;
+        gap: 3px;
+        box-shadow: var(--shadow-lg);
+    }
+}
+
+/* Mobile */
 @media (max-width: 640px) {
     .grid-container {
         padding: 0;
@@ -33,11 +54,9 @@
     }
 
     .grid {
-        max-width: 100%;
-        max-height: 80vh;
+        width: min(96vw, 480px);
         padding: 6px;
         gap: 2px;
         box-shadow: var(--shadow-md);
-        /* Lighter shadow on mobile */
     }
 }

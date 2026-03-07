@@ -5,8 +5,12 @@
     padding: 30px;
     border: 1px solid var(--bg-tertiary);
     box-shadow: var(--shadow-xl);
-    min-width: 300px;
-    max-width: 400px;
+    /* Fixed width in desktop side-by-side layout; flex-shrink:0 so the
+       grid gets all remaining space instead of being compressed. */
+    min-width: 220px;
+    max-width: 340px;
+    width: 260px;
+    flex-shrink: 0;
     max-height: calc(85vh - 200px);
     height: fit-content;
     overflow-y: auto;
@@ -61,7 +65,18 @@
     opacity: 0.7;
 }
 
-/* Mobile responsiveness */
+/* Tablet: word list goes full-width below the grid */
+@media (max-width: 960px) {
+    .word-list-container {
+        width: min(90vw, 560px);
+        min-width: unset;
+        max-width: 560px;
+        padding: 20px;
+        max-height: none;
+    }
+}
+
+/* Mobile */
 @media (max-width: 640px) {
     .word-list-container {
         width: 100%;

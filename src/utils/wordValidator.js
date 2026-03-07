@@ -83,19 +83,26 @@ export const validateSelection = (grid, selectedCells, wordList) => {
     // Extract word from selection
     const selectedWord = extractWord(grid, selectedCells);
 
-    // Check if word exists in word list (forward or backward)
-    const upperWordList = wordList.map(w => w.toUpperCase());
+    // Strip spaces from config words before comparing against grid letters.
+    // The grid never contains spaces, but the config words may (e.g. "PATERNAL LEAVE").
+    // We keep the original config word to return as the match so the UI can
+    // display it with correct spacing and casing.
+    const gridWordList = wordList.map(w => w.replace(/\s+/g, '').toUpperCase());
     const reversedWord = selectedWord.split('').reverse().join('');
 
-    if (upperWordList.includes(selectedWord)) {
+    const forwardIndex = gridWordList.indexOf(selectedWord);
+    if (forwardIndex !== -1) {
         return {
-            word: selectedWord,
+            word: wordList[forwardIndex], // original config word (may have spaces)
             cells: selectedCells,
             reversed: false,
         };
-    } else if (upperWordList.includes(reversedWord)) {
+    }
+
+    const reversedIndex = gridWordList.indexOf(reversedWord);
+    if (reversedIndex !== -1) {
         return {
-            word: reversedWord,
+            word: wordList[reversedIndex], // original config word (may have spaces)
             cells: selectedCells,
             reversed: true,
         };

@@ -128,15 +128,18 @@ const GamePage = () => {
     const handleHint = useCallback(() => {
         if (hintsRemaining <= 0 || !level || !gridData) return;
 
-        // Get words that haven't been found yet
+        // Get words that haven't been found yet.
+        // Compare via normalized (spaceless, uppercase) form so config words
+        // like "PATERNAL LEAVE" match found.word correctly.
+        const normalize = (w) => w.replace(/\s+/g, '').toUpperCase();
         const remainingWords = level.words.filter(
-            word => !foundWords.some(found => found.word.toUpperCase() === word.toUpperCase())
+            word => !foundWords.some(found => normalize(found.word) === normalize(word))
         );
 
         if (remainingWords.length > 0) {
-            // Find the first non-found word's placement
-            const targetWord = remainingWords[0].toUpperCase();
-            const placement = gridData.placements.find(p => p.word === targetWord);
+            // placements carry configWord (the original level config string incl. spaces)
+            // so we can look them up without stripping spaces here.
+            const placement = gridData.placements.find(p => p.configWord === remainingWords[0]);
 
             if (placement) {
                 // Find which letters of this word are already hinted
@@ -151,12 +154,9 @@ const GamePage = () => {
                     setHintedCells(prev => [...prev, { row: nextLetterPos.row, col: nextLetterPos.col }]);
                     setHintsRemaining(prev => prev - 1);
                 } else {
-                    // If all letters are already hinted for the first word, try the next word
-                    // This case is unlikely given normal hint counts but handles the edge case
-                    const nextWordIndex = remainingWords.findIndex((_, idx) => idx > 0);
-                    if (nextWordIndex !== -1) {
-                        const nextTargetWord = remainingWords[nextWordIndex].toUpperCase();
-                        const nextPlacement = gridData.placements.find(p => p.word === nextTargetWord);
+                    // All letters of the first word are already hinted — try the next word
+                    if (remainingWords.length > 1) {
+                        const nextPlacement = gridData.placements.find(p => p.configWord === remainingWords[1]);
                         if (nextPlacement) {
                             const firstLetterPos = nextPlacement.positions[0];
                             setHintedCells(prev => [...prev, { row: firstLetterPos.row, col: firstLetterPos.col }]);

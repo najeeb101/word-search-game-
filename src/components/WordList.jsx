@@ -1,10 +1,14 @@
 // WordList component - Displays words to find
 import React from 'react';
+import { getDisplayWord } from '../config/levels';
 import '../styles/WordList.css';
 
 const WordList = ({ words, foundWords }) => {
     const isWordFound = (word) => {
-        return foundWords.some(found => found.word.toUpperCase() === word.toUpperCase());
+        // Compare without spaces and case-insensitively so config words like
+        // "PATERNAL LEAVE" match validator results correctly.
+        const normalize = (w) => w.replace(/\s+/g, '').toUpperCase();
+        return foundWords.some(found => normalize(found.word) === normalize(word));
     };
 
     const foundCount = foundWords.length;
@@ -24,7 +28,7 @@ const WordList = ({ words, foundWords }) => {
                         key={index}
                         className={`word-item ${isWordFound(word) ? 'found' : ''}`}
                     >
-                        {word.toUpperCase()}
+                        {getDisplayWord(word)}
                     </div>
                 ))}
             </div>

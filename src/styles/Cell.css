@@ -3,7 +3,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(0.875rem, 2vw, 1.25rem);
+    /*
+     * Scale font with the number of columns (--grid-columns set inline
+     * by Grid.jsx). At 10 cols the size is ~1.25rem; at 18 cols ~0.75rem.
+     * Formula: viewport-based size divided by column count normalised to 8.
+     */
+    font-size: clamp(0.5rem, calc(3.5vw / (var(--grid-columns, 10) / 8)), 1.25rem);
     font-weight: 600;
     background: white;
     border: 1.5px solid var(--bg-tertiary);
@@ -76,11 +81,21 @@
     }
 }
 
-/* Mobile responsiveness */
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 960px) {
     .cell {
-        font-size: clamp(0.7rem, 4vw, 1.1rem);
-        border-width: 1.5px;
+        font-size: clamp(0.45rem, calc(5vw / (var(--grid-columns, 10) / 8)), 1.1rem);
+        border-width: 1px;
+        min-width: 0;
+        min-height: 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .cell {
+        font-size: clamp(0.4rem, calc(5.5vw / (var(--grid-columns, 10) / 8)), 1rem);
+        border-width: 1px;
         min-width: 0;
         min-height: 0;
     }

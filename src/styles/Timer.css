@@ -71,12 +71,10 @@
 /* Mobile responsiveness */
 @media (max-width: 640px) {
     .timer {
-        width: 100%;
         padding: 0 16px;
         height: 44px;
         gap: 8px;
         box-shadow: var(--shadow-sm);
-        /* Cleaner shadow */
     }
 
     .timer-value {

@@ -24,7 +24,7 @@ export const LEVELS = [
         id: 3,
         name: 'Medium',
         gridSize: 12,
-        words: ['PINKTAX', 'MOMGUILT', 'DOUBLEBIND', 'GLASSCLIFF'],
+        words: ['PINK TAX', 'MOM GUILT', 'DOUBLE BIND', 'GLASS CLIFF'],
         timeLimit: null, // Count up timer
         hints: 2,
         description: '',
@@ -33,7 +33,7 @@ export const LEVELS = [
         id: 4,
         name: 'Hard',
         gridSize: 14,
-        words: ['SPONSORSHIP', 'MISCARRIAGE', 'OSTEOPOROSIS', 'PATERNALLEAVE'],
+        words: ['SPONSORSHIP', 'MISCARRIAGE', 'OSTEOPOROSIS', 'PATERNAL LEAVE'],
         timeLimit: null, // Count up timer
         hints: 2,
         description: '',
@@ -51,7 +51,7 @@ export const LEVELS = [
         id: 6,
         name: 'Legend',
         gridSize: 18,
-        words: ['FERTILITYJOURNEY', 'POSTNATALANXIETY', 'IMPOSTORSYNDROME', 'INTERSECTIONALITY', 'MEDICALGASLIGHTING', 'EMPOWERMENT'],
+        words: ['FERTILITY JOURNEY', 'POSTNATAL ANXIETY', 'IMPOSTOR SYNDROME', 'INTERSECTIONALITY', 'MEDICAL GASLIGHTING', 'EMPOWERMENT'],
         timeLimit: null, // Count up timer
         hints: 1,
         description: '',
@@ -95,3 +95,22 @@ export const isLevelUnlocked = (levelId, userProgress) => {
 
     return prevProgress && prevProgress.completed;
 };
+
+/**
+ * Returns the word as it should appear in the grid: uppercase, no spaces.
+ * Use this wherever the word is placed or matched against grid letters.
+ * @param {string} word - Word from level config (may contain spaces)
+ * @returns {string} Uppercase word with spaces removed
+ */
+export const getGridWord = (word) => word.replace(/\s+/g, '').toUpperCase();
+
+/**
+ * Returns the word formatted for human-readable display (Title Case).
+ * Use this in WordList, victory modals, or any UI that shows the word to the player.
+ * @param {string} word - Word from level config (may contain spaces)
+ * @returns {string} Title-cased word (e.g. "PATERNAL LEAVE" → "Paternal Leave")
+ */
+export const getDisplayWord = (word) =>
+    word
+        .toLowerCase()
+        .replace(/\b\w/g, (char) => char.toUpperCase());

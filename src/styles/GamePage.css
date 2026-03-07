@@ -74,11 +74,24 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    gap: 40px;
+    gap: 32px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: var(--spacing-lg);
+}
+
+/*
+ * Switch to column layout at 960px—before grid (~560px) + word list (~260px)
+ * + gap start overflowing the container.
+ */
+@media (max-width: 960px) {
+    .game-content {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
 }
 
 /* Victory Modal */
@@ -212,30 +225,18 @@
 
     .game-controls {
         display: flex;
-        flex-direction: column;
-        /* Stack vertically on mobile */
+        flex-direction: row;
+        justify-content: center;
         width: 100%;
         gap: 12px;
         padding: 0 16px;
     }
 
     .hint-button {
-        width: 100%;
-        /* Full width on mobile */
         min-height: 44px;
-        /* Minimum touch target height */
         font-size: 0.95rem;
         padding: 0 16px;
         box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
-        /* Reduced shadow intensity */
-    }
-
-    .game-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-sm);
-        width: 100%;
     }
 
     .victory-content {
