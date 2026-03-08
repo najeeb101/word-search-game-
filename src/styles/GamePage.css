@@ -2,6 +2,9 @@
 .game-page {
     min-height: 100vh;
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    /* Prevent iOS Safari from interpreting horizontal drag-selection as
+       a swipe-back navigation gesture */
+    overscroll-behavior-x: none;
 }
 
 .game-container {
@@ -40,6 +43,7 @@
     display: flex;
     gap: var(--spacing-md);
     align-items: center;
+    justify-content: center;
 }
 
 .hint-button {

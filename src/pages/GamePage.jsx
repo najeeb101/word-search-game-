@@ -18,6 +18,18 @@ const GamePage = () => {
     const { user } = useAuth();
     const { saveCompletion, incrementAttempts } = useGameProgress(user?.uid);
 
+    // Block iOS Safari's left-edge swipe-back navigation gesture.
+    // Must use addEventListener with passive:false — React JSX handlers are passive.
+    useEffect(() => {
+        const blockEdgeSwipe = (e) => {
+            if (e.touches && e.touches[0].clientX < 30) {
+                e.preventDefault();
+            }
+        };
+        document.addEventListener('touchstart', blockEdgeSwipe, { passive: false });
+        return () => document.removeEventListener('touchstart', blockEdgeSwipe);
+    }, []);
+
     const [level, setLevel] = useState(null);
     const [foundWords, setFoundWords] = useState([]);
     const [isGameActive, setIsGameActive] = useState(false);
@@ -197,11 +209,9 @@ const GamePage = () => {
                             time={gameTime}
                             timeLimit={level.timeLimit}
                         />
-                        {hintsRemaining > 0 && (
-                            <button className="hint-button" onClick={handleHint}>
-                                💡 Hint ({hintsRemaining})
-                            </button>
-                        )}
+                        <button className="hint-button" onClick={handleHint} disabled={hintsRemaining === 0}>
+                            💡 Hint ({hintsRemaining})
+                        </button>
                     </div>
                 </div>
 

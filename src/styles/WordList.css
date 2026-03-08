@@ -68,7 +68,9 @@
 /* Tablet: word list goes full-width below the grid */
 @media (max-width: 960px) {
     .word-list-container {
-        width: min(90vw, 560px);
+        /* Use 100% so the list stays within its padded container, not 90vw
+           which can exceed the available space on narrow stacked layouts. */
+        width: min(560px, 100%);
         min-width: unset;
         max-width: 560px;
         padding: 20px;
@@ -80,15 +82,17 @@
 @media (max-width: 640px) {
     .word-list-container {
         width: 100%;
-        min-width: 100%;
+        min-width: unset;
+        max-width: 100%;
+        flex-shrink: 1;
         padding: 16px;
         background: white;
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-sm);
-        /* Lighter shadow */
         border: 1px solid var(--bg-tertiary);
         margin-top: 12px;
         max-height: none;
+        box-sizing: border-box;
     }
 
     .word-list-header {
@@ -98,49 +102,29 @@
         margin-bottom: 12px;
         padding-bottom: 8px;
         border-bottom: 1px solid var(--bg-secondary);
-        width: 100%;
-        gap: 12px;
     }
 
     .word-list-header h3 {
-        font-size: 0.95rem;
-        white-space: nowrap;
-        /* Prevent title wrapping */
-        flex: 1;
+        font-size: 1rem;
         margin: 0;
     }
 
     .word-count {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         padding: 2px 10px;
-        white-space: nowrap;
-        /* Prevent count wrapping */
     }
 
+    /* 2-column grid so all words are visible without horizontal scroll */
     .word-list {
-        display: flex;
-        flex-direction: row;
-        /* Horizontal row */
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        /* Horizontal scroll */
-        gap: 10px;
-        padding: 4px 0;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .word-list::-webkit-scrollbar {
-        display: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
     }
 
     .word-item {
-        flex: 0 0 auto;
-        padding: 8px 16px;
-        background: var(--bg-primary);
-        border-radius: var(--radius-md);
+        padding: 8px 12px;
         font-size: 0.85rem;
-        border: 1px solid var(--bg-tertiary);
-        white-space: nowrap;
+        white-space: normal;
+        word-break: break-word;
     }
 }
