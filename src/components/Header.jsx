@@ -22,17 +22,10 @@ const Header = ({ user, onSignOut, showBackButton = false }) => {
                 </div>
 
                 <div className="header-right">
-                    {user && (
-                        <>
-                            <span className="user-info">
-                                {user.isAnonymous ? 'Guest' : user.email}
-                            </span>
-                            {onSignOut && (
-                                <button className="sign-out-button" onClick={onSignOut}>
-                                    Sign Out
-                                </button>
-                            )}
-                        </>
+                    {user && onSignOut && (
+                        <button className="sign-out-button" onClick={onSignOut}>
+                            Sign Out
+                        </button>
                     )}
                 </div>
             </div>

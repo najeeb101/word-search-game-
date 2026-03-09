@@ -101,6 +101,34 @@
     box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
 }
 
+.auth-success {
+    background: rgba(107, 142, 107, 0.1);
+    border: 1px solid var(--success-color);
+    color: var(--success-color);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.forgot-password-button {
+    width: 100%;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: var(--spacing-sm);
+    text-align: center;
+    padding: var(--spacing-sm);
+    box-shadow: none;
+}
+
+.forgot-password-button:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+    transform: none;
+    box-shadow: none;
+}
+
 .auth-footer {
     margin-top: var(--spacing-xl);
     font-size: 0.875rem;

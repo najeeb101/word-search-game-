@@ -7,7 +7,9 @@ import '../styles/Auth.css';
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { signIn, error: authError, loading } = useAuth();
+    const [resetSent, setResetSent] = useState(false);
+    const [resetError, setResetError] = useState('');
+    const { signIn, resetPassword, error: authError, loading } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -16,6 +18,16 @@ const LoginPage = () => {
         if (user) {
             navigate('/levels');
         }
+    };
+
+    const handleForgotPassword = async () => {
+        if (!email) {
+            setResetError('Please enter your email address above first.');
+            return;
+        }
+        setResetError('');
+        const sent = await resetPassword(email);
+        if (sent) setResetSent(true);
     };
 
     return (
@@ -52,9 +64,15 @@ const LoginPage = () => {
                         </div>
 
                         {authError && <p className="auth-error">{authError}</p>}
+                        {resetError && <p className="auth-error">{resetError}</p>}
+                        {resetSent && <p className="auth-success">Reset email sent! Check your inbox.</p>}
 
                         <button type="submit" className="auth-button" disabled={loading}>
                             {loading ? 'Signing in...' : 'Sign In'}
+                        </button>
+
+                        <button type="button" className="forgot-password-button" onClick={handleForgotPassword}>
+                            Forgot password?
                         </button>
                     </form>
 

@@ -44,7 +44,7 @@ export const LEVELS = [
         gridSize: 16,
         words: ['ENDOMETRIOSIS', 'MANTERRUPTION', 'MICROAGGRESSION', 'HYPERANDROGENISM'],
         timeLimit: null, // Count up timer
-        hints: 1,
+        hints: 2,
         description: '',
     },
     {
@@ -53,7 +53,7 @@ export const LEVELS = [
         gridSize: 18,
         words: ['FERTILITY JOURNEY', 'POSTNATAL ANXIETY', 'IMPOSTOR SYNDROME', 'INTERSECTIONALITY', 'MEDICAL GASLIGHTING', 'EMPOWERMENT'],
         timeLimit: null, // Count up timer
-        hints: 1,
+        hints: 2,
         description: '',
     },
 ];

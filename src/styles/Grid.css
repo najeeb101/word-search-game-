@@ -6,19 +6,17 @@
     padding: 0;
     touch-action: none;
     overscroll-behavior: contain;
-    /* Shrink inside a flex row so the word list isn't pushed off-screen */
+    /* Shrink inside a flex row so the word list isn't pushed off-screen;
+       cap growth to the grid's own max-width to avoid dead space. */
     min-width: 0;
-    flex: 1 1 auto;
+    flex: 0 1 580px;
 }
 
 .grid {
     display: grid;
-    gap: 4px;
-    /*
-     * Fill the available flex slot up to 580px.
-     * In the side-by-side layout, "100%" refers to the flex container
-     * width—not the viewport—so the grid never overflows.
-     */
+    /* Reduce gap proportionally for large grids (16-18 cols) to avoid
+       accumulated pixel-rounding overflow at the grid edges */
+    gap: min(4px, max(2px, calc(52px / var(--grid-columns, 10))));
     width: min(580px, 100%);
     padding: 12px;
     background: white;
@@ -29,6 +27,9 @@
     box-sizing: border-box;
     aspect-ratio: 1 / 1;
     margin: 0 auto;
+    overflow: hidden;
+    /* Establish a container context so cells use cqi for font-size */
+    container-type: inline-size;
 }
 
 /* Tablet: stack grid above word list before they start competing */
@@ -41,7 +42,7 @@
     .grid {
         width: min(560px, 100%);
         padding: 8px;
-        gap: 3px;
+        gap: min(3px, max(1px, calc(40px / var(--grid-columns, 10))));
         box-shadow: var(--shadow-lg);
     }
 }
@@ -54,7 +55,10 @@
     }
 
     .grid {
-        width: min(480px, 100%);
+        /* Use 100% so the grid is strictly bounded by its container;
+           min(480px, 100%) can resolve to 480px if the container
+           misreports its width, causing horizontal overflow. */
+        width: 100%;
         padding: 6px;
         gap: 2px;
         box-shadow: var(--shadow-md);

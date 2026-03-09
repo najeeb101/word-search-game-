@@ -7,11 +7,11 @@
     box-shadow: var(--shadow-xl);
     /* Fixed width in desktop side-by-side layout; flex-shrink:0 so the
        grid gets all remaining space instead of being compressed. */
-    min-width: 220px;
-    max-width: 340px;
-    width: 260px;
+    min-width: 240px;
+    max-width: 360px;
+    width: 290px;
     flex-shrink: 0;
-    max-height: calc(85vh - 200px);
+    max-height: calc(92vh - 160px);
     height: fit-content;
     overflow-y: auto;
 }

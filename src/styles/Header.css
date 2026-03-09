@@ -96,6 +96,16 @@
         padding: var(--spacing-sm) var(--spacing-md);
     }
 
+    /* left:0/right:0 ignores the header's own padding on mobile —
+       switch to padding-relative offsets so Back button has breathing room */
+    .header-left {
+        left: var(--spacing-md);
+    }
+
+    .header-right {
+        right: var(--spacing-md);
+    }
+
     .logo {
         height: 32px;
     }

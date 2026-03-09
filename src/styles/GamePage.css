@@ -1,6 +1,6 @@
 /* Game Page styles */
 .game-page {
-    min-height: 100vh;
+    width: 100%;
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     /* Prevent iOS Safari from interpreting horizontal drag-selection as
        a swipe-back navigation gesture */
@@ -8,9 +8,11 @@
 }
 
 .game-container {
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
     padding: var(--spacing-xl);
+    box-sizing: border-box;
 }
 
 .game-header {
@@ -78,7 +80,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    gap: 32px;
+    gap: var(--spacing-xl);
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -94,7 +96,14 @@
         flex-direction: column;
         align-items: center;
         gap: var(--spacing-md);
-        padding: var(--spacing-md);
+        padding: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .game-content {
+        padding: 0;
+        width: 100%;
     }
 }
 
@@ -207,7 +216,7 @@
 /* Mobile responsiveness */
 @media (max-width: 640px) {
     .game-container {
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm);
     }
 
     .game-header {
@@ -237,7 +246,8 @@
     }
 
     .hint-button {
-        min-height: 44px;
+        height: 44px;
+        width: auto;
         font-size: 0.95rem;
         padding: 0 16px;
         box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);

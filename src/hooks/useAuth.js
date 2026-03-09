@@ -4,6 +4,7 @@ import {
     signInAnonymously,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
+    sendPasswordResetEmail,
     signOut as firebaseSignOut,
     onAuthStateChanged
 } from 'firebase/auth';
@@ -70,6 +71,21 @@ export const useAuth = () => {
     };
 
     /**
+     * Send password reset email
+     */
+    const resetPassword = async (email) => {
+        try {
+            setError(null);
+            await sendPasswordResetEmail(auth, email);
+            return true;
+        } catch (err) {
+            setError(err.message);
+            console.error('Password reset error:', err);
+            return false;
+        }
+    };
+
+    /**
      * Sign out current user
      */
     const signOut = async () => {
@@ -89,6 +105,7 @@ export const useAuth = () => {
         signInAnon,
         signIn,
         signUp,
+        resetPassword,
         signOut,
     };
 };
