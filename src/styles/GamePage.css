@@ -267,3 +267,12 @@
         width: 100%;
     }
 }
+
+/* Very small phones (≤380px) */
+@media (max-width: 380px) {
+    .hint-button {
+        font-size: 0.78rem;
+        padding: 0 10px;
+        height: 40px;
+    }
+}

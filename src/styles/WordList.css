@@ -55,6 +55,64 @@
     font-weight: 600;
     font-size: 0.95rem;
     transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+}
+
+.word-item-text {
+    flex: 1;
+}
+
+.word-info-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 2px;
+    opacity: 0.6;
+    transition: opacity var(--transition-fast), color var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.word-info-btn:hover,
+.word-info-btn.active {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+.word-definition {
+    background: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-top: 4px;
+    animation: defSlideDown 0.18s ease-out;
+}
+
+@keyframes defSlideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.word-definition strong {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.word-definition p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0;
+    font-weight: 400;
 }
 
 .word-item.found {
@@ -121,10 +179,25 @@
         gap: 8px;
     }
 
+    /* When a definition is open, give that wrapper full width */
+    .word-item-wrapper:has(.word-definition) {
+        grid-column: 1 / -1;
+    }
+
     .word-item {
         padding: 8px 12px;
         font-size: 0.85rem;
         white-space: normal;
         word-break: break-word;
+        hyphens: manual;
+    }
+
+    .word-info-btn {
+        font-size: 0.9rem;
+    }
+
+    .word-definition {
+        /* span full width in 2-col grid */
+        grid-column: 1 / -1;
     }
 }
